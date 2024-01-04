@@ -1,0 +1,24 @@
+<div class="content-container">
+  @if (showDetails) {
+    <p>{{ training?.description }}</p>
+    <p>Ihre Trainerin/Ihr Trainer: <b>{{ training?.trainer?.name }}</b></p>
+    <p>Vom <b>{{ training?.startDate | date }}</b> bis zum <b>{{ training?.endDate | date }}</b>.</p>
+    <p></p>
+  } @else {
+    <h2>{{ training?.name }}</h2>
+    <p>{{ training?.description }}</p>
+  }
+
+  <ng-content></ng-content>
+
+  <h3>Bewertungen unseres {{ training?.name }}-Trainings:</h3>
+  <div class="bewertungs-card-container">
+    @for (bewertung of training?.bewertungen; track bewertung) {
+      <div class="bewertungs-card">
+        <lib-stars-input [staticRating]="bewertung.stars"/>
+        <p>{{ bewertung.comment }}</p>
+        <p>von <b>{{ bewertung.bewerter }}</b></p>
+      </div>
+    }
+  </div>
+</div>

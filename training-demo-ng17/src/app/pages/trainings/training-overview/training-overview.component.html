@@ -1,0 +1,19 @@
+<h1 class="content-header">Unsere Trainings</h1>
+@if (trainingsWithBewertungen().error; as error) {
+  <div class="content-container">
+    <h2>Fehler</h2>
+    <p>{{ error }}</p>
+  </div>
+}
+@if (trainingsWithBewertungen().loading) {
+  <div class="content-container">
+    <mat-spinner [diameter]="30" [strokeWidth]="3"></mat-spinner>
+  </div>
+}
+@for (training of trainingsWithBewertungen().data; track training.id) {
+  <app-training-entry [training]="training">
+    <p>
+      <button [routerLink]="[training.id]" color="primary" mat-raised-button>Zum Training</button>
+    </p>
+  </app-training-entry>
+}

@@ -1,0 +1,13 @@
+@if (trainingWithBewertung?.(); as training) {
+  <h1 class="content-header">{{training?.name}}</h1>
+  <app-training-entry [training]="training" showDetails></app-training-entry>
+  @defer (on viewport) {
+  <app-bewertung-input (emitBewertung)="sendFeedback(training?.id)" [bewertungForm]="bewertungForm">
+  </app-bewertung-input>
+  } @placeholder {
+    <p>Loading</p>
+  } @error {
+  } @loading () {
+
+  }
+}
