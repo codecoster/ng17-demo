@@ -1,7 +1,11 @@
 <div class="content-container">
   <p>{{training?.description}}</p>
+
+  @if(detailActive) {
   <p>Ihre Trainerin/Ihr Trainer: <b>{{training?.trainer?.name}}</b></p>
   <p>Vom <b>{{training?.startDate | date}}</b> bis zum <b>{{training?.endDate | date}}</b>.</p>
+  }
+
   <p></p>
 
   <h3>Bewertungen unseres {{training?.name}}-Trainings:</h3>

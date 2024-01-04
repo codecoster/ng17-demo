@@ -11,9 +11,9 @@ describe('TrainingOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TrainingOverviewComponent],
-      providers: [{provide: TrainingWithBewertungService, useValue: {allTrainings: signal([])}}]
-    })
+    imports: [TrainingOverviewComponent],
+    providers: [{ provide: TrainingWithBewertungService, useValue: { allTrainings: signal([]) } }]
+})
       .compileComponents();
   });
 

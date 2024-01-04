@@ -13,23 +13,11 @@ import { TrainingsRoutingModule } from './trainings-routing.module';
 
 
 @NgModule({
-  declarations: [
-    TrainingsDetailComponent,
-    TrainingEntryComponent,
-    TrainingOverviewComponent
-  ],
-  exports: [
-    TrainingEntryComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    TrainingsRoutingModule,
-    BewertungInputComponent
-  ]
+    imports: [
+        TrainingsDetailComponent,
+        TrainingsRoutingModule,
+        TrainingOverviewComponent
+    ]
 })
 export class TrainingsModule {
 }
