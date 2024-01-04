@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import { Component, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -10,7 +10,7 @@ import { UserInfoService } from '../user-info/user-info.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgIf]
+  imports: [RouterLink, RouterLinkActive]
 })
 export class NavComponent {
 

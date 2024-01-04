@@ -10,7 +10,15 @@ import { Bewertung } from './bewertung.model';
   providedIn: 'root'
 })
 export class BewertungService {
+
+
+
   private bewertungen = signal<Bewertung[]>([]);
+
+
+
+
+
 
   readonly allBewertungen = this.bewertungen.asReadonly();
   readonly durchschnittsBewertung = computed(() => {
@@ -39,7 +47,7 @@ export class BewertungService {
     }).pipe(
       switchMap(res => Math.random() < 0.8 ? of(res) : throwError(new Error('Bewertung: An error happened'))),
       tap(
-        res => this.bewertungen.mutate(bew => bew.push(res)),
+        res => this.bewertungen.update(bew => bew.concat(res)),
         err => this.modalService.openErrorModal(err.message)
       ),
       onErrorResumeNext(EMPTY)

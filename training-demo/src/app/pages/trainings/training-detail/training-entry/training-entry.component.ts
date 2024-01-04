@@ -10,4 +10,6 @@ export class TrainingEntryComponent {
 
   @Input() training?: TrainingWithBewertung;
 
+  //training = input<TrainingWithBewertung>();
+
 }

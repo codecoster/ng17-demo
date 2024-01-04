@@ -6,16 +6,28 @@
 
   <h3>Bewertungen unseres {{training?.name}}-Trainings:</h3>
   <div class="bewertungs-card-container">
-    <div *ngFor="let bewertung of training?.bewertungen" class="bewertungs-card">
-      <p class="stars">
-        <mat-icon *ngIf="bewertung.stars>0">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>1">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>2">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>3">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>4">star</mat-icon>
-      </p>
-      <p>{{bewertung.comment}}</p>
-      <p>von <b>{{bewertung.bewerter}}</b></p>
-    </div>
+    @for (bewertung of training?.bewertungen; track bewertung.id) {
+      <div class="bewertungs-card">
+        <p class="stars">
+          @if (bewertung.stars>0) {
+            <mat-icon>star</mat-icon>
+          }
+          @if (bewertung.stars>1) {
+            <mat-icon>star</mat-icon>
+          }
+          @if (bewertung.stars>2) {
+            <mat-icon>star</mat-icon>
+          }
+          @if (bewertung.stars>3) {
+            <mat-icon>star</mat-icon>
+          }
+          @if (bewertung.stars>4) {
+            <mat-icon>star</mat-icon>
+          }
+        </p>
+        <p>{{bewertung.comment}}</p>
+        <p>von <b>{{bewertung.bewerter}}</b></p>
+      </div>
+    }
   </div>
 </div>

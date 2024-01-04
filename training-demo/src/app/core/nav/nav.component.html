@@ -11,8 +11,10 @@
     Trainings
   </a>
 
-  <div *ngIf="userInfo() as user" class="user-info">
+  @if (userInfo(); as user) {
+  <div class="user-info">
     Eingeloggt als: <b>{{user.name}}</b> <br>
     Bereits an {{user.finishedCourses}} Trainings teilgenommen
   </div>
+  }
 </nav>
