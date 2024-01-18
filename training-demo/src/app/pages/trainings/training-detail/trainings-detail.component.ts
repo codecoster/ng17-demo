@@ -7,11 +7,15 @@ import { Bewertung } from '../../../shared/bewertung/bewertung.model';
 import { StarRating } from '../../../shared/stars-input/stars-input.component';
 import { TrainingWithBewertungService } from '../state/training-with-bewertung.service';
 import { TrainingWithBewertung } from '../state/training.model';
+import { BewertungInputComponent } from '../../../shared/bewertung/bewertung-input/bewertung-input.component';
+import { TrainingEntryComponent } from './training-entry/training-entry.component';
 
 @Component({
-  selector: 'app-trainings-detail',
-  templateUrl: './trainings-detail.component.html',
-  styleUrls: ['./trainings-detail.component.scss']
+    selector: 'app-trainings-detail',
+    templateUrl: './trainings-detail.component.html',
+    styleUrls: ['./trainings-detail.component.scss'],
+    standalone: true,
+    imports: [TrainingEntryComponent, BewertungInputComponent]
 })
 export class TrainingsDetailComponent implements OnChanges {
 

@@ -12,13 +12,13 @@ describe('TrainingsDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TrainingsDetailComponent],
-      providers: [
-        {provide: ActivatedRoute, useValue: {paramMap: of(new Map([['id','123']]))}},
-        {provide: TrainingWithBewertungService, useValue: {}},
-        {provide: UserInfoService, useValue: {username: of('helene')}}
-      ]
-    })
+    imports: [TrainingsDetailComponent],
+    providers: [
+        { provide: ActivatedRoute, useValue: { paramMap: of(new Map([['id', '123']])) } },
+        { provide: TrainingWithBewertungService, useValue: {} },
+        { provide: UserInfoService, useValue: { username: of('helene') } }
+    ]
+})
       .compileComponents();
   });
 

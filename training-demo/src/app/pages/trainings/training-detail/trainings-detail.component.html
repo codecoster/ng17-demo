@@ -1,6 +1,10 @@
 @if (trainingWithBewertung?.(); as training) {
   <h1 class="content-header">{{training?.name}}</h1>
-  <app-training-entry [training]="training"></app-training-entry>
+  @defer (on interaction) {
+    <app-training-entry [training]="training" showDescription></app-training-entry>
+  } @placeholder {
+    <p>Please click!</p>
+  }
   <app-bewertung-input (emitBewertung)="sendFeedback(training?.id)" [bewertungForm]="bewertungForm">
   </app-bewertung-input>
 }
