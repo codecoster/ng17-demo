@@ -1,33 +1,50 @@
 <h1 class="content-header">Unsere Trainings</h1>
-<div *ngIf="trainingsWithBewertungen().error" class="content-container">
-  <h2>Fehler</h2>
-  <p>{{trainingsWithBewertungen().error}}</p>
-</div>
-<div *ngIf="trainingsWithBewertungen().loading" class="content-container">
-  <mat-spinner [diameter]="30" [strokeWidth]="3"></mat-spinner>
-</div>
-<div *ngFor="let training of trainingsWithBewertungen().data"
-     class="content-container">
-  <h2>{{training.name}}</h2>
-  <p>{{training.description}}</p>
-  <p></p>
-  <p>
-    <button [routerLink]="[training.id]" color="primary" mat-raised-button>Zum Training</button>
-  </p>
-  <p></p>
-
-  <h3>Bewertungen unseres {{training.name}}-Trainings:</h3>
-  <div class="bewertungs-card-container">
-    <div *ngFor="let bewertung of training.bewertungen" class="bewertungs-card">
-      <p class="stars">
-        <mat-icon *ngIf="bewertung.stars>0">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>1">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>2">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>3">star</mat-icon>
-        <mat-icon *ngIf="bewertung.stars>4">star</mat-icon>
-      </p>
-      <p>{{bewertung.comment}}</p>
-      <p>von {{bewertung.bewerter}}</p>
+@if (trainingsWithBewertungen().error) {
+  <div class="content-container">
+    <h2>Fehler</h2>
+    <p>{{trainingsWithBewertungen().error}}</p>
+  </div>
+}
+@if (trainingsWithBewertungen().loading) {
+  <div class="content-container">
+    <mat-spinner [diameter]="30" [strokeWidth]="3"></mat-spinner>
+  </div>
+}
+@for (training of trainingsWithBewertungen().data; track training) {
+  <div
+    class="content-container">
+    <h2>{{training.name}}</h2>
+    <p>{{training.description}}</p>
+    <p></p>
+    <p>
+      <button [routerLink]="[training.id]" color="primary" mat-raised-button>Zum Training</button>
+    </p>
+    <p></p>
+    <h3>Bewertungen unseres {{training.name}}-Trainings:</h3>
+    <div class="bewertungs-card-container">
+      @for (bewertung of training.bewertungen; track bewertung) {
+        <div class="bewertungs-card">
+          <p class="stars">
+            @if (bewertung.stars>0) {
+              <mat-icon>star</mat-icon>
+            }
+            @if (bewertung.stars>1) {
+              <mat-icon>star</mat-icon>
+            }
+            @if (bewertung.stars>2) {
+              <mat-icon>star</mat-icon>
+            }
+            @if (bewertung.stars>3) {
+              <mat-icon>star</mat-icon>
+            }
+            @if (bewertung.stars>4) {
+              <mat-icon>star</mat-icon>
+            }
+          </p>
+          <p>{{bewertung.comment}}</p>
+          <p>von {{bewertung.bewerter}}</p>
+        </div>
+      }
     </div>
   </div>
-</div>
+}
